@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row justify-content-center ">
+            {% for i in proje %}
+              
+            <div class="col-md-4 mt-5 mb-5">
+                <div class="card-deck">
+                    <div class="card">
+                    {%if i.foto%}<img class="card-img-top" src="{{i.foto.url}}" alt="Card image cap">{%else%}<img class="card-img-top" src="../static/img/work.jpg" alt="Card image cap">{%endif%}
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.titre}}</h5>
+                        <p class="card-text"> {{i.description}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Ajoute le :{{i.date}}</small>
+                    </div>
+            </div>
+            <div class="row justify-content-center text-center">
+                <div class="col px-lg-5">
+                    <a class="btn btn-primary "  href="{% url 'profile' %}">BACK</a>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock body %}
+
+
+{% block footer %}
+    
+{% endblock footer %}
+    
+    

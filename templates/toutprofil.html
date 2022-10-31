@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+
+{% block body %}
+<section id="team">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-8 mx-auto text-center">
+                
+                <h1> our Members</h1>
+            </div>
+        
+        </div>
+        <div class="row text-center g-4">
+            
+            {% for membre in tout_profil %}
+                 
+            <div class="col-lg-3 col-sm-6">
+                <div class="team-member card-effect">
+                    {%if membre.foto %}<a href="{% url 'user' membre.id %} "><img src="{{membre.foto.url}}" alt=""></a>{%else%}<a href="{% url 'user' membre.id %} "><img src="../static/img/user.png" alt=""></a>{%endif%}
+                    <a href="{% url 'user' membre.id %} "><h5 class="mb-0 mt-4">{{membre.user.profile}}</h5></a>
+                    <div class="">
+                        <a href="{% url 'user' membre.id %} " class="btn btn-primary rounded-circle">Profile</a>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section><!-- TEAM -->
+{% endblock body %}
+    

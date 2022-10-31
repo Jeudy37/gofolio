@@ -1,0 +1,36 @@
+ <!-- NAVBAR -->
+ <nav class="navbar navbar-expand-lg py-3 sticky-top navbar-light bg-white">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img class="logo" src="" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto ps-4">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+               {% if request.user.is_authenticated%}
+                    
+                <li class="nav-item">
+                    <a class="nav-link pe-5" href="{% url 'newproject' %}">New project</a>
+                </li>
+            </ul>
+            <div class="row justify-content-end ">
+                <div class="col-md-5  col-md-offset-3 flex-column ">
+                {% if online %}
+                <a href="{% url 'profile' %}">{%if online.foto %}<img src="{{online.foto.url}}" title="Your Profile" class="w-25 rounded-circle-" alt=""></a>{% else%}<img src="../media/image/user.png" title="Your Profile" class="w-25 float-end" alt="">{%endif%}
+                </div>
+                {% endif %}
+            </div>
+            <a href="{% url 'logout' %}" class="btn  btn-outline-warning ms-lg-3 ">Log out</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="btn btn-primary ms-lg-3">Join Us</a>
+           
+        </div>
+        {% endif %}
+    </div>
+</nav><!-- //NAVBAR -->

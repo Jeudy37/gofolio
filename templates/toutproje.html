@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row mb-5">
+        <div class="col-md-8 mx-auto text-center">
+            <h6 class="text-primary">PROJECTS</h6>
+            <h1>Our Recent Work</h1>
+            <p>Some projects who made by our users</p>
+        </div>
+    </div>
+    <div class="row g-3">
+        {% for work in tout_proje %}
+          
+        
+        <div class="col-lg-4 col-sm-6">
+            <div class="project">
+                {%if work.foto %}<img src="{{work.foto.url}}" width="auto" height="200px" class="img-fluid " alt="">{%else%}<img src="../static/img/work.jpg" alt="">{%endif%}
+                <div class="overlay">
+                    <div>
+                        <h4 class="text-white">{{work.titre}}</h4>
+                        <h6 class="text-white">{{work.categori.set}}</h6>
+                        <a href="{% url 'readproje' work.id %}"><h6 class="text-info">Read more</h6></a> 
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+</div>
+{% endblock body %}
